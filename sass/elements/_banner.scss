@@ -1,0 +1,66 @@
+@import '../mq';
+
+$banner-total-width: 15rem;
+
+@font-face {
+  font-family: 'Las Enter';
+  src: url('/LasEnter.woff') format('woff');
+}
+
+.banner {
+  overflow: none;
+  width: $banner-total-width;
+  text-align: center;
+  margin: 0 auto;
+  position: relative;
+  height: 6rem;
+  .text {
+    width: 100%;
+    > * {
+      padding: 0;
+      margin: 0;
+      width: 100%;
+    }
+    top: 0.25rem;
+    position: absolute;
+    color: #fc8;
+    font-family: 'Las Enter', fantasy;
+    font-size: larger;
+    text-shadow: 0 0 0.5rem #e21;
+    // transform: skewY(2deg);
+  }
+  .backstrip {
+    top: 1.1rem;
+    left: 0.25rem;
+    position: absolute;
+    height: 1.5rem;
+    width: 14.5rem;
+    background: #410;
+    transform: skewY(6deg);
+  }
+  .frontstrip {
+    top: 1rem;
+    position: absolute;
+    height: 2rem;
+    width: $banner-total-width;
+    background: #111;
+    transform: skewY(-10deg);
+  }
+  .backplate {
+    left: 1.5rem;
+    position: absolute;
+    height: 3rem;
+    width: 12rem;
+    background: #111;
+    transform: skewX(15deg);
+  }
+  .mountbar {
+    position: absolute;
+    background: #aaa;
+    height: 0.3rem;
+    top: 1.5rem;
+    border-radius: 999px;
+    left: -2.5rem;
+    width: 20rem;
+  }
+}

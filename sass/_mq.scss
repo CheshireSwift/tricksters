@@ -1,0 +1,14 @@
+$max-phone-width: 30em;
+$max-tablet-width: 50em;
+
+@mixin tablet {
+  @media (min-width: #{$max-phone-width}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$max-tablet-width}) {
+    @content;
+  }
+}

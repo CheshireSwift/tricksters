@@ -1,0 +1,24 @@
+@import 'mq';
+
+body {
+  padding: 0 0.5rem;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: #eee;
+  background: #333;
+}
+
+.content {
+  color: #311;
+  background: #fed;
+  font-size: 18px;
+  line-height: 1.6;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  box-shadow: 0.25rem 0.25rem 0.1rem #310a;
+
+  @include tablet {
+    max-width: 70rem;
+    padding: 2rem;
+    margin: auto;
+  }
+}
