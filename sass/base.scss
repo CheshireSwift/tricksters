@@ -1,24 +1,72 @@
 @import 'mq';
+@import 'colors';
 
 body {
   padding: 0 0.5rem;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  color: #eee;
-  background: #333;
+  color: $c-white;
+  background: $c-black;
 }
 
 .content {
-  color: #311;
-  background: #fed;
+  color: $c-script;
+  background: $c-page;
   font-size: 18px;
   line-height: 1.6;
   padding: 1rem;
   border-radius: 0.25rem;
-  box-shadow: 0.25rem 0.25rem 0.1rem #310a;
+  box-shadow: 0 0 1.5rem $c-shadow;
 
   @include tablet {
     max-width: 70rem;
-    padding: 2rem;
+    padding: 1rem 2rem 2rem;
     margin: auto;
+  }
+
+  @mixin header-common {
+    color: $c-gold;
+    margin: 2rem 0;
+  }
+  h1 {
+    @include header-common;
+    // font-family: stardos-stencil, serif;
+    // font-family: sancreek, fantasy;
+    // font-family: megrim, fantasy;
+    font-family: vast-shadow, sans-serif;
+    // font-family: oldenburg, fantasy;
+    // font-family: abril-fatface, serif;
+    font-size: 48px;
+    font-variant: small-caps;
+  }
+  h2 {
+    @include header-common;
+    font-family: abril-fatface, serif;
+    font-weight: normal;
+    border-bottom: 1px solid;
+  }
+}
+
+.header-image {
+  display: block;
+  object-fit: cover;
+  margin: 1rem;
+  max-width: 100%;
+  margin: 0 auto -0.5rem;
+
+  @media (min-width: 77rem) {
+    max-width: 74rem;
+  }
+}
+
+.hero {
+  p {
+    font-size: larger;
+  }
+}
+
+a {
+  color: $c-gold;
+  &:visited {
+    color: $c-dirty-gold;
   }
 }

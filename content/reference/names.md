@@ -1,7 +1,6 @@
 +++
+title = "Trickster Names"
 +++
-
-# Trickster Names
 
 - Loki
 - Odin

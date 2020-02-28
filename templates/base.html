@@ -5,11 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/base.css" />
     <link rel="stylesheet" href="/elements.css" />
+    <script src="//use.edgefonts.net/stardos-stencil;sancreek;megrim;vast-shadow;oldenburg;abril-fatface.js"></script>
     <title>Mistchief</title>
   </head>
   <body>
+    {% set this = page | default(value=section) %} {% if this.extra.header_image %}
+    <img class="header-image" src="{{this.extra.header_image | safe}}" />
+    {% endif %}
     <article class="content">
-      {% block content %} {% endblock %}
+      <h1>{{this.title}}</h1>
+      {{this.description | default(value="") | markdown | safe }}{% block content %} {% endblock %}
     </article>
   </body>
 </html>

@@ -1,0 +1,8 @@
+{% macro render(body, title="Info") %}
+<aside class="infobox">
+  <h2 class="infobox-heading">{{ title }}</h2>
+  <div class="infobox-content">
+    {{ body | markdown | safe }}
+  </div>
+</aside>
+{% endmacro render %}

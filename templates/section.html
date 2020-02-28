@@ -1,4 +1,12 @@
-{% extends "base.html" %}
-{% block content %} 
-  {{section.content | safe}}
+{% extends "base.html" %} {% block content %} {{section.content | safe}}
+<h2>Contains</h2>
+<ul>
+  {% for subsection in section.subsections %} {% set sub_meta = get_section(path=subsection, metadata_only=true) %}
+  <li>
+    <a href="/{{sub_meta.path}}"><em>{{sub_meta.title}}</em></a>
+  </li>
+  {% endfor %} {% for page in section.pages %}
+  <li><a href="/{{page.path}}">{{page.title}}</a></li>
+  {% endfor %}
+</ul>
 {% endblock %}
