@@ -6,100 +6,141 @@
   src: url('/LasEnter.woff') format('woff');
 }
 
-@keyframes flicker {
-  0%,
-  65%,
-  67%,
-  69%,
-  85%,
-  100% {
-    border-color: #e82;
-    box-shadow: 0 0 0.5rem #e21;
+$c-glow: #e21;
+$c-neon-low: #e82;
+$c-neon-mid: #ea4;
+$c-neon-high: #fc8;
+$c-neon-off: #421;
+
+@mixin neon-on($scale) {
+  border-color: $c-neon-low;
+  box-shadow: 0 0 $scale * 0.5rem $c-glow;
+}
+
+@mixin neon-off {
+  border-color: $c-neon-off;
+  box-shadow: 0 0 0 $c-glow;
+}
+
+@mixin neon-border($color, $scale) {
+  border: $scale * 0.2em solid $color;
+  box-shadow: 0 0 $scale * 0.5rem $c-glow;
+}
+
+@keyframes pulse {
+  -10% {
+    color: $c-neon-mid;
   }
-  66%,
-  68%,
-  70%,
-  71% {
-    border-color: #421;
-    box-shadow: 0 0 0 #e21;
+  25%,
+  75% {
+    color: $c-neon-high;
+  }
+  120% {
+    color: $c-white;
   }
 }
 
-$border: 0.3rem;
-.banner {
-  width: 20rem;
-  margin: 2rem auto 0;
-  position: relative;
-  height: 7rem;
-  border-left: solid $border transparent;
-  border-top: solid $border transparent;
-  background: $c-black;
-  background-clip: padding-box;
-  border-radius: 1.5rem 0;
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    width: 3em;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
-    margin: -$border;
-    border-radius: inherit;
-    background: radial-gradient(closest-corner, #888 65%, #ccc 80%, #666 100%);
+@mixin mistchief-neon($scale, $flicker, $bars) {
+  @keyframes flicker {
+    0%,
+    65%,
+    67%,
+    69%,
+    85%,
+    100% {
+      @include neon-on($scale);
+    }
+    66%,
+    68%,
+    70%,
+    71% {
+      @include neon-off;
+    }
   }
-  .text {
-    width: 100%;
-    > * {
-      padding: 0;
-      margin: 0;
+
+  .banner {
+    width: $scale * 20rem;
+    margin: $scale * 2rem auto 0;
+    position: relative;
+    height: $scale * 6rem;
+
+    @if $bars {
+      background: $c-black;
+      $border: $scale * 0.3rem;
+      border-radius: $scale * 1.5rem 0;
+      background-clip: padding-box;
+      border-left: solid $border transparent;
+      border-top: solid $border transparent;
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        width: $scale * 3em;
+        bottom: $border;
+        left: 0;
+        z-index: -1;
+        margin: -$border;
+        border-radius: inherit;
+        background: radial-gradient(closest-corner, #888 65%, #ccc 80%, #666 100%);
+      }
+      .mountbar {
+        position: absolute;
+        border-radius: 999px;
+        background: #aaa;
+        background: linear-gradient(0deg, #888 0%, #ccc 50%, #888 100%);
+        height: $scale * 0.3rem;
+        width: $scale * 10rem;
+        left: $scale * -0.1rem;
+        &.mid-bar {
+          top: $scale * 2rem;
+        }
+        &.lower-bar {
+          top: $scale * 4rem;
+        }
+      }
+    }
+    .banner-text {
       width: 100%;
+      > * {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+      }
+      top: $scale * -0.9rem;
+      right: $scale * -2rem;
+      position: absolute;
+      transition: color 1s, text-shadow 2s;
+      color: $c-neon-high;
+      text-shadow: 0 0 $scale * 0.5rem $c-glow;
+      :hover {
+        color: $c-neon-high;
+        text-shadow: 0 0 $scale * 0.5rem $c-glow;
+      }
+      font-family: 'Las Enter', fantasy;
+      font-size: $scale * 32px;
+      transform: skewY(-10deg);
+      animation: 10s infinite pulse alternate;
     }
-    top: -0.9rem;
-    right: -2rem;
-    position: absolute;
-    color: #fc8;
-    font-family: 'Las Enter', fantasy;
-    font-size: xx-large;
-    text-shadow: 0 0 0.5rem #e21;
-    transform: skewY(-10deg);
-  }
-  .backstrip {
-    background: #410;
-    right: 2.2rem;
-    top: -0.75rem;
-    position: absolute;
-    height: 5.5rem;
-    width: 15rem;
-    transform: skewX(15deg);
-    border: 0.2em solid #e82;
-    box-shadow: 0 0 0.5rem #e21;
-    animation: 6s infinite flicker;
-  }
-  .frontstrip {
-    top: -0.2rem;
-    right: -0.75rem;
-    position: absolute;
-    height: 3.6rem;
-    width: 19rem;
-    background: #111;
-    transform: skewY(-10deg);
-    border: 0.2em solid #ea4;
-    box-shadow: 0 0 0.5rem #e21;
-  }
-  .mountbar {
-    position: absolute;
-    border-radius: 999px;
-    background: #aaa;
-    background: linear-gradient(0deg, #888 0%, #ccc 50%, #888 100%);
-    height: 0.3rem;
-    width: 10rem;
-    left: -0.1rem;
-    &.mid-bar {
-      top: 2rem;
+    .frontstrip {
+      top: $scale * -0.2rem;
+      right: $scale * -0.75rem;
+      position: absolute;
+      height: $scale * 3.6rem;
+      width: $scale * 19rem;
+      background: #111;
+      transform: skewY(-10deg);
+      @include neon-border($c-neon-mid, $scale);
     }
-    &.lower-bar {
-      top: 4rem;
+    .backstrip {
+      background: #410;
+      right: $scale * 2.2rem;
+      top: $scale * -0.75rem;
+      position: absolute;
+      height: $scale * 5.5rem;
+      width: $scale * 15rem;
+      transform: skewX(15deg);
+      @include neon-border($c-neon-low, $scale);
+      animation: if($flicker, 6s infinite flicker, none);
     }
   }
 }

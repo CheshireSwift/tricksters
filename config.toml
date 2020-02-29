@@ -1,5 +1,5 @@
 # The URL the site will be built for
-base_url = "https://swift.swifteagle.co.uk/tricksters/"
+base_url = "http://mistchief.club/"
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true

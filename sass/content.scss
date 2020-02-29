@@ -1,0 +1,28 @@
+@import 'colors';
+
+.nav-spacer {
+  height: 4rem;
+}
+
+.header-image {
+  display: block;
+  margin: 1rem;
+  max-width: 100%;
+  margin: 0 auto -0.5rem;
+
+  @media (min-width: 77rem) {
+    max-width: 74rem;
+  }
+}
+
+@import 'elements/banner';
+@include mistchief-neon(0.4, false, false);
+nav {
+  .banner {
+    display: inline-block;
+    font-size: 32px;
+    h1 {
+      font-size: 26px;
+    }
+  }
+}

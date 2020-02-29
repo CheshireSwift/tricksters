@@ -1,22 +1,16 @@
+{% import "macros/banner.html" as banner %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/base.css" />
+    <link rel="stylesheet" href="/common.css" />
     <link rel="stylesheet" href="/home.css" />
     <title>Mistchief</title>
   </head>
   <body>
-    <header class="banner">
-      <div class="mountbar mid-bar"></div>
-      <div class="mountbar lower-bar"></div>
-      <div class="backstrip"></div>
-      <div class="frontstrip"></div>
-      <div class="text">
-        <h1>Mistchief</h1>
-      </div>
-    </header>
+    {{ banner::banner(bars=true) }}
     <article class="content">
       {{section.content | safe}}
     </article>

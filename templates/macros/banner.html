@@ -1,0 +1,13 @@
+{% macro banner(bars=false) %}
+<header class="banner {% if bars %}banner-post{% endif %}">
+  {% if bars %}
+  <div class="mountbar mid-bar"></div>
+  <div class="mountbar lower-bar"></div>
+  {% endif %}
+  <div class="backstrip"></div>
+  <div class="frontstrip"></div>
+  <div class="banner-text">
+    <h1>Mistchief</h1>
+  </div>
+</header>
+{% endmacro banner %}

@@ -1,0 +1,84 @@
+@import 'mq';
+@import 'colors';
+
+* {
+  margin: 0;
+}
+
+body {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: $c-white;
+  background: $c-black;
+}
+
+$tablet-content-width: 70rem;
+
+.content {
+  color: $c-script;
+  background: $c-page;
+  font-size: 18px;
+  line-height: 1.6;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 1.5rem $c-shadow;
+
+  @include tablet {
+    max-width: $tablet-content-width;
+    padding: 1rem 2rem 2rem;
+    margin: auto;
+  }
+
+  @mixin header-common {
+    color: $c-gold;
+    margin: 2rem 0;
+  }
+  h1 {
+    @include header-common;
+    // font-family: stardos-stencil, serif;
+    // font-family: sancreek, fantasy;
+    // font-family: megrim, fantasy;
+    font-family: vast-shadow, sans-serif;
+    // font-family: oldenburg, fantasy;
+    // font-family: abril-fatface, serif;
+    font-size: 48px;
+    font-variant: small-caps;
+  }
+  h2 {
+    @include header-common;
+    font-family: abril-fatface, serif;
+    font-weight: normal;
+    border-bottom: 1px solid;
+  }
+}
+
+.hero {
+  p {
+    font-size: larger;
+  }
+}
+
+a {
+  color: $c-gold;
+  &:visited {
+    color: $c-dirty-gold;
+  }
+  &:hover {
+    color: $c-gold;
+  }
+}
+
+nav {
+  padding: 0.5rem;
+  @include tablet {
+    padding: 0.5rem calc(50% - #{$tablet-content-width} / 2);
+  }
+  z-index: 1000;
+  position: fixed;
+  width: 100%;
+  background: $c-box;
+  // border-bottom: 1px solid $c-gold;
+  box-shadow: 0 0 0.5rem $c-shadow;
+  a {
+    text-decoration: none;
+  }
+}
